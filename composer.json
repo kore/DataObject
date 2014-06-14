@@ -1,6 +1,7 @@
 {
     "name":         "kore/data-object",
     "description":  "Simple base class for data objects.",
+    "license": "MIT",
     "autoload": {
         "psr-0": {
             "Kore": "src/"
