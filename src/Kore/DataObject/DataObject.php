@@ -2,7 +2,7 @@
 
 namespace Kore\DataObject;
 
-class Struct
+class DataObject
 {
     /**
      * Generic constructor

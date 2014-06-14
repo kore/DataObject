@@ -2,25 +2,25 @@
 
 namespace Kore\DataObject;
 
-class TestStruct extends Struct {
+class TestDataObject extends Struct {
     public $property;
 }
 
 /**
- * @covers \Kagency\CouchdbEndpoint\Struct
+ * @covers \Kagency\CouchdbEndpoint\DataObject
  */
-class StructTest extends \PHPUnit_Framework_TestCase
+class DataObjectTest extends \PHPUnit_Framework_TestCase
 {
     public function testGetValue()
     {
-        $struct = new TestStruct();
+        $struct = new TestDataObject();
 
         $this->assertNull($struct->property);
     }
 
     public function testConstructor()
     {
-        $struct = new TestStruct(
+        $struct = new TestDataObject(
             array(
                 'property' => 42,
             )
@@ -31,7 +31,7 @@ class StructTest extends \PHPUnit_Framework_TestCase
 
     public function testSetValue()
     {
-        $struct = new TestStruct();
+        $struct = new TestDataObject();
         $struct->property = 42;
 
         $this->assertSame(42, $struct->property);
@@ -39,7 +39,7 @@ class StructTest extends \PHPUnit_Framework_TestCase
 
     public function testUnsetValue()
     {
-        $struct = new TestStruct();
+        $struct = new TestDataObject();
         $struct->property = 42;
         unset($struct->property);
 
@@ -51,7 +51,7 @@ class StructTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetUnknownValue()
     {
-        $struct = new TestStruct();
+        $struct = new TestDataObject();
 
         $this->assertNull($struct->unknown);
     }
@@ -61,7 +61,7 @@ class StructTest extends \PHPUnit_Framework_TestCase
      */
     public function testConstructorUnknwonValue()
     {
-        $struct = new TestStruct(
+        $struct = new TestDataObject(
             array(
                 'unknown' => 42,
             )
@@ -73,7 +73,7 @@ class StructTest extends \PHPUnit_Framework_TestCase
      */
     public function testSetUnknownValue()
     {
-        $struct = new TestStruct();
+        $struct = new TestDataObject();
         $struct->unknown = 42;
     }
 
@@ -82,7 +82,7 @@ class StructTest extends \PHPUnit_Framework_TestCase
      */
     public function testUnsetUnknownValue()
     {
-        $struct = new TestStruct();
+        $struct = new TestDataObject();
         unset($struct->unknown);
     }
 }
