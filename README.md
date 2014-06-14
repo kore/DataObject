@@ -1,5 +1,7 @@
 # Data Object
 
+![Travis Build Status](https://travis-ci.org/kore/DataObject.svg "Travis Build Status")
+
 This repository just contains a simple base class for PHP data objects.
 
 This class throws exceptions if you try to read or write unknown properties,
