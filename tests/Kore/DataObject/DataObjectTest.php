@@ -7,7 +7,7 @@ class TestDataObject extends DataObject {
 }
 
 /**
- * @covers \Kagency\DataObject\DataObject
+ * @covers \Kore\DataObject\DataObject
  */
 class DataObjectTest extends \PHPUnit_Framework_TestCase
 {
