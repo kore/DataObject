@@ -2,12 +2,12 @@
 
 namespace Kore\DataObject;
 
-class TestDataObject extends Struct {
+class TestDataObject extends DataObject {
     public $property;
 }
 
 /**
- * @covers \Kagency\CouchdbEndpoint\DataObject
+ * @covers \Kagency\DataObject\DataObject
  */
 class DataObjectTest extends \PHPUnit_Framework_TestCase
 {
