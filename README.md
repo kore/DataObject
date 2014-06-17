@@ -12,7 +12,7 @@ and ensures a clone is performed recursively.
 To use this data object base class for your own data objects, just use
 something like this:
 
-    class Person extends \Kore\DataObject\DataObject
+    class Person extends \Kore\DataObject\Struct
     {
         public $prename;
 
