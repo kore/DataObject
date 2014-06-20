@@ -85,4 +85,56 @@ class DataObjectTest extends \PHPUnit_Framework_TestCase
         $struct = new TestDataObject();
         unset($struct->unknown);
     }
+
+    public function testBasicClone()
+    {
+        $struct = new TestDataObject();
+        $struct->property = 42;
+
+        $clone = clone $struct;
+
+        $this->assertSame(
+            $struct->property,
+            $clone->property
+        );
+    }
+
+    public function testCloneAggregate()
+    {
+        $struct = new TestDataObject();
+        $struct->property = new TestDataObject();
+
+        $clone = clone $struct;
+
+        $this->assertNotSame(
+            $struct->property,
+            $clone->property
+        );
+    }
+
+    public function testCloneAggregateInArray()
+    {
+        $struct = new TestDataObject();
+        $struct->property = array(new TestDataObject());
+
+        $clone = clone $struct;
+
+        $this->assertNotSame(
+            $struct->property[0],
+            $clone->property[0]
+        );
+    }
+
+    public function testCloneAggregateInDeepArray()
+    {
+        $struct = new TestDataObject();
+        $struct->property = array(array(new TestDataObject()));
+
+        $clone = clone $struct;
+
+        $this->assertNotSame(
+            $struct->property[0][0],
+            $clone->property[0][0]
+        );
+    }
 }
