@@ -1,6 +1,6 @@
 # Data Object
 
-![Travis Build Status](https://travis-ci.org/kore/DataObject.svg "Travis Build Status")
+[![Travis Build Status](https://travis-ci.org/kore/DataObject.svg "Travis Build Status")](https://travis-ci.org/kore/DataObject)
 
 This repository just contains a simple base class for PHP data objects.
 
@@ -12,12 +12,14 @@ and ensures a clone is performed recursively.
 To use this data object base class for your own data objects, just use
 something like this:
 
-    class Person extends \Kore\DataObject\DataObject
-    {
-        public $prename;
+```php
+class Person extends \Kore\DataObject\DataObject
+{
+    public $prename;
 
-        public $forename;
-    }
+    public $forename;
+}
+```
 
 If you now access unknown properties you will get exceptions. For more details
 on the motivation behind this, read:
