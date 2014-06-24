@@ -86,4 +86,15 @@ class DataObject
             }
         }
     }
+
+    /**
+     * Restore object from var_export
+     *
+     * @param array $values
+     * @return DataObject
+     */
+    public static function __set_state(array $values)
+    {
+        return new static($values);
+    }
 }

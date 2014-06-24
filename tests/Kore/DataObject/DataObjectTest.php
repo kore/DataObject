@@ -137,4 +137,27 @@ class DataObjectTest extends \PHPUnit_Framework_TestCase
             $clone->property[0][0]
         );
     }
+
+    public function testSetState()
+    {
+        $struct = new TestDataObject();
+        $struct->property = 42;
+
+        $restored = eval("return " . var_export($struct, true) . ';');
+
+        $this->assertEquals($struct, $restored);
+        $this->assertNotSame($struct, $restored);
+    }
+
+    /**
+     * @expectedException \OutOfRangeException
+     */
+    public function testFailOnInvalidSetState()
+    {
+        TestDataObject::__set_state(
+            array(
+                'invalid' => 42,
+            )
+        );
+    }
 }
