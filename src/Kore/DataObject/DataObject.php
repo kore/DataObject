@@ -58,7 +58,7 @@ class DataObject
      */
     public function __clone()
     {
-        foreach ($this as $property => $value) {
+        foreach (get_object_vars($this) as $property => $value) {
             if (is_object($value)) {
                 $this->$property = clone $value;
             }
