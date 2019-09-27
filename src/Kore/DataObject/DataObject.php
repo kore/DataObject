@@ -8,12 +8,19 @@ class DataObject
      * Generic constructor
      *
      * @param array $values
+     * @param bool $ignoreAdditionalAttributes (optional) When set to true, additional attributes in $values will be ignored while construction. Defaults to false
      * @return void
      */
-    public function __construct(array $values = array())
+    public function __construct(array $values = array(), $ignoreAdditionalAttributes = false)
     {
         foreach ($values as $name => $value) {
-            $this->$name = $value;
+            if ($ignoreAdditionalAttributes) {
+                try {
+                    $this->$name = $value;
+                } catch (\OutOfRangeException $e) {}
+            } else {
+                $this->$name = $value;
+            }
         }
     }
 
