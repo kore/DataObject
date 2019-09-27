@@ -31,34 +31,6 @@ class DataObjectTest extends TestCase
         $this->assertSame(42, $struct->property);
     }
 
-    public function testNonStrictConstructor()
-    {
-        $struct = new TestDataObject(
-            array(
-                'property' => 42,
-                'nonExistingProperty' => 23,
-            ),
-            true
-        );
-
-        $this->assertSame(42, $struct->property);
-    }
-
-    public function testAdditionalParametersNotSet()
-    {
-        $struct = new TestDataObject(
-            array(
-                'property' => 42,
-                'nonExistingProperty' => 23,
-            ),
-            true
-        );
-
-        $this->assertSame(42, $struct->property);
-        $this->expectException(\OutOfRangeException::class);
-        $this->assertNull($struct->nonExistingProperty);
-    }
-
     public function testSetValue()
     {
         $struct = new TestDataObject();
