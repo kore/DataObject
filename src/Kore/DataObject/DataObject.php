@@ -8,7 +8,9 @@ class DataObject
      * Generic constructor
      *
      * @param array $values
-     * @param bool $ignoreAdditionalAttributes (optional) When set to true, additional attributes in $values will be ignored while construction. Defaults to false
+     * @param bool $ignoreAdditionalAttributes (optional) When set to true,
+     *  additional attributes in $values will be ignored while construction.
+     *  Defaults to false
      * @return void
      */
     public function __construct(array $values = array(), bool $ignoreAdditionalAttributes = false)
@@ -17,7 +19,9 @@ class DataObject
             if ($ignoreAdditionalAttributes) {
                 try {
                     $this->$name = $value;
-                } catch (\OutOfRangeException $e) {}
+                } catch (\OutOfRangeException $e) {
+                    // Ignore this property
+                }
             } else {
                 $this->$name = $value;
             }
