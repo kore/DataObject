@@ -2,6 +2,8 @@
 
 namespace Kore\DataObject;
 
+use PHPUnit\Framework\TestCase;
+
 class TestDataObject extends DataObject {
     public $property;
 }
@@ -9,7 +11,7 @@ class TestDataObject extends DataObject {
 /**
  * @covers \Kore\DataObject\DataObject
  */
-class DataObjectTest extends \PHPUnit_Framework_TestCase
+class DataObjectTest extends TestCase
 {
     public function testGetValue()
     {
@@ -46,21 +48,17 @@ class DataObjectTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse(isset($struct->property));
     }
 
-    /**
-     * @expectedException \OutOfRangeException
-     */
     public function testGetUnknownValue()
     {
         $struct = new TestDataObject();
 
+        $this->expectException(\OutOfRangeException::class);
         $this->assertNull($struct->unknown);
     }
 
-    /**
-     * @expectedException \OutOfRangeException
-     */
     public function testConstructorUnknwonValue()
     {
+        $this->expectException(\OutOfRangeException::class);
         $struct = new TestDataObject(
             array(
                 'unknown' => 42,
@@ -68,21 +66,17 @@ class DataObjectTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    /**
-     * @expectedException \OutOfRangeException
-     */
     public function testSetUnknownValue()
     {
         $struct = new TestDataObject();
+        $this->expectException(\OutOfRangeException::class);
         $struct->unknown = 42;
     }
 
-    /**
-     * @expectedException \OutOfRangeException
-     */
     public function testUnsetUnknownValue()
     {
         $struct = new TestDataObject();
+        $this->expectException(\OutOfRangeException::class);
         unset($struct->unknown);
     }
 
@@ -149,11 +143,9 @@ class DataObjectTest extends \PHPUnit_Framework_TestCase
         $this->assertNotSame($struct, $restored);
     }
 
-    /**
-     * @expectedException \OutOfRangeException
-     */
     public function testFailOnInvalidSetState()
     {
+        $this->expectException(\OutOfRangeException::class);
         TestDataObject::__set_state(
             array(
                 'invalid' => 42,
