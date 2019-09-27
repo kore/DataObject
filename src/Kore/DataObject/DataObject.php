@@ -11,7 +11,7 @@ class DataObject
      * @param bool $ignoreAdditionalAttributes (optional) When set to true, additional attributes in $values will be ignored while construction. Defaults to false
      * @return void
      */
-    public function __construct(array $values = array(), $ignoreAdditionalAttributes = false)
+    public function __construct(array $values = array(), bool $ignoreAdditionalAttributes = false)
     {
         foreach ($values as $name => $value) {
             if ($ignoreAdditionalAttributes) {
